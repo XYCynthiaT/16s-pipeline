@@ -1,0 +1,3 @@
+raw_fastq:
+  s0Rawdata/demo_r1.fq.gz: the path and filename of your r1 fastq file
+  s0RawData/demo_r1.fq.gz: the path and filename of your r2 fastq file

@@ -1,0 +1,25 @@
+{
+	"raw_fastq" :
+	{
+		"s0RawData/demo_r1.fq.gz" : "the path and filename of your r1 fastq file",
+		"s0RawData/demo_r2.fq.gz" : "the path and filename of your r2 fastq file"
+	},
+	"barcode" :
+	{
+		"s0RawData/barcode": "the path and filename of your barcodes. The barcode file should only contain 2 columns in the order of samplenames and barcodes"
+	},
+	"primers" :
+	{
+		"fwd": "GTGYCAGCMGCCGCGGTAA",
+		"rev": "GGACTACNVGGGTWTCTAAT"
+	},
+	"cutadapt":
+	{
+		"threads": 6
+	},
+	"reference_genome":
+	{
+		"genome_file_path": "../../silva",
+		"genome_file": "../../silva/SILVA_SSU_r132_March2018.RData"
+	}
+}

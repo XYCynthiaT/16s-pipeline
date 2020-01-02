@@ -1,0 +1,10 @@
+s1Demultiplex/
+s2CutAdapt/
+s3Combine/
+s4FastQC/
+s5DADA2/
+s6TidyData/
+slurmout/
+sync
+.snakemake/
+.vscode/

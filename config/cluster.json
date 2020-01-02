@@ -1,0 +1,17 @@
+{
+    "__default__" :
+    {
+        "name" : "16s-pipeline.{rule}",
+        "time" : "1-0",
+        "nodes" : 1,
+        "ntasks" : 2,
+        "mem" : "4G",
+        "partition" : "high",
+        "output"    : "slurmout/{rule}_%A.out",
+        "error"     : "slurmout/{rule}_%A.err"
+    },
+    "taxonomy" :
+    {
+        "partition" : "med"
+    }
+}
