@@ -31,6 +31,8 @@ matrix:
         - dada2
         - DECIPHER
         - Biostrings
+      script:
+        scripts/rpackages.R
     - language: python
       python: "3.7.4"
       install:
