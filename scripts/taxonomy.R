@@ -27,4 +27,4 @@ taxid = t(sapply(ids, function(x){
 colnames(taxid) = ranks
 rownames(taxid) = getSequences(seqtab.nochim)
 
-save(dna, taxid, file = "s5DADA2/DADA2_taxaid.rda")
+save(dna, taxid, file = "output/s5DADA2/DADA2_taxaid.rda")

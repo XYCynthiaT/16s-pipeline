@@ -64,5 +64,5 @@ rownames(orderedTaxid) <- paste0("ASV", 1:nrow(orderedTaxid))
 # Export to .csv ----------------------------------------------------------
 
 loger("Export to .csv files")
-write.csv(uniqSeqtab, file = "s6TidyData/ASV_samplCounts.csv")
-write.csv(orderedTaxid, file = "s6TidyData/ASV_taxanomy.csv")
+write.csv(uniqSeqtab, file = "output/s6TidyData/ASV_samplCounts.csv")
+write.csv(orderedTaxid, file = "output/s6TidyData/ASV_taxanomy.csv")

@@ -9,10 +9,10 @@ def unzip(zipfn, destination):
 zipfile1 = snakemake.input[0]
 zipfile2 = snakemake.input[1]
 
-unzip(zipfile1, "s4FastQC")
-unzip(zipfile2, "s4FastQC")
+unzip(zipfile1, "output/s4FastQC")
+unzip(zipfile2, "output/s4FastQC")
 
-paths = ["s4FastQC/r1_fastqc/fastqc_data.txt", "s4FastQC/r2_fastqc/fastqc_data.txt"]
+paths = ["output/s4FastQC/r1_fastqc/fastqc_data.txt", "output/s4FastQC/r2_fastqc/fastqc_data.txt"]
 
 def readtbl(path):
     '''

@@ -75,8 +75,8 @@ errR = learnErrors(filrs, multithread = TRUE)
 loger("Generating plots of error rates")
 ploterrF = plotErrors(errF, nominalQ = TRUE)
 ploterrR = plotErrors(errR, nominalQ = TRUE)
-ggsave("s5DADA2/img/ploterrF.png", plot = ploterrF, width = 8, height = 8, units = "in")
-ggsave("s5DADA2/img/ploterrR.png", plot = ploterrR, width = 8, height = 8, units = "in")
+ggsave("output/s5DADA2/img/ploterrF.png", plot = ploterrF, width = 8, height = 8, units = "in")
+ggsave("output/s5DADA2/img/ploterrR.png", plot = ploterrR, width = 8, height = 8, units = "in")
 
 # --> Step5. Sample Inference
 loger("Sample inference, take some time...")
@@ -106,5 +106,5 @@ seqtab.nochim = removeBimeraDenovo(seqtab, method="consensus", multithread=TRUE,
 print("passing rate:")
 print(sum(seqtab.nochim)/sum(seqtab))
 
-save(seqtab.nochim, file = "s5DADA2/DADA2_seqtab_nochim.rda")
-# save.image("s5DADA2/DADA2_raw.rda")
+save(seqtab.nochim, file = "output/s5DADA2/DADA2_seqtab_nochim.rda")
+# save.image("output/s5DADA2/DADA2_raw.rda")
