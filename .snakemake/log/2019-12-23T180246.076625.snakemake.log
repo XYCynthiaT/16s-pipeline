@@ -1,0 +1,6 @@
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+Building DAG of jobs...
+MissingInputException in line 10 of /home/xinyut/workflows/16s-pipeline/Snakefile:
+Missing input files for rule all:
+tbl1.cvs

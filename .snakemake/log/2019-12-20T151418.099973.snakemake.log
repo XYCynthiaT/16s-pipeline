@@ -1,0 +1,21 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 20
+Job counts:
+	count	jobs
+	1	DADA2
+	1	all
+	1	taxaCleaning
+	1	taxonomy
+	4
+
+[Fri Dec 20 15:14:19 2019]
+rule DADA2:
+    input: s3Combine
+    output: s5DADA2/DADA2_seqtab_nochim.rda, s5DADA2/img/ploterrF.png, s5DADA2/img/ploterrR.png
+    jobid: 3
+
+Submitted job 3 with external jobid 'Submitted batch job 16397859'.
+Terminating processes on user request, this might take some time.
+Will exit after finishing currently running jobs.
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-20T151418.099973.snakemake.log

@@ -1,0 +1,29 @@
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	fastqcScore
+	2
+
+[Mon Dec 23 18:03:57 2019]
+rule fastqcScore:
+    input: s4FastQC/r1_fastqc.zip, s4FastQC/r2_fastqc.zip
+    output: s4FastQC/r1_fastqc, s4FastQC/r2_fastqc, tbl1.csv, tbl2.csv
+    jobid: 1
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 139 of /home/xinyut/workflows/16s-pipeline/Snakefile:
+Missing files after 5 seconds:
+tbl1.csv
+tbl2.csv
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Removing output files of failed job fastqcScore since they might be corrupted:
+s4FastQC/r1_fastqc, s4FastQC/r2_fastqc
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-23T180356.456000.snakemake.log

@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 50 of /home/xinyut/workflows/16s-pipeline/microbiome.smk:
+Missing input files for rule Demultiplex_rev:
+s0RawData/barcode_file

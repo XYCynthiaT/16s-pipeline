@@ -1,0 +1,3 @@
+NameError in line 89 of /home/xinyut/workflows/16s-pipeline/microbiome.smk:
+name 'sample' is not defined
+  File "/home/xinyut/workflows/16s-pipeline/microbiome.smk", line 89, in <module>

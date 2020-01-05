@@ -1,0 +1,18 @@
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+The flag 'directory' used in rule all is only valid for outputs, not inputs.
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	fastqcScore
+	2
+
+[Mon Dec 23 22:19:14 2019]
+rule fastqcScore:
+    input: s4FastQC/r1_fastqc.zip, s4FastQC/r2_fastqc.zip
+    output: s4FastQC/r1_fastqc, s4FastQC/r2_fastqc, cutLens.csv
+    jobid: 1
+
