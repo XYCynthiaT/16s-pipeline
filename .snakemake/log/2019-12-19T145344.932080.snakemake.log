@@ -1,4 +1,0 @@
-AttributeError in line 74 of /home/xinyut/workflows/16s-pipeline/microbiome.smk:
-'str' object has no attribute 'sample'
-  File "/home/xinyut/workflows/16s-pipeline/microbiome.smk", line 89, in <module>
-  File "/home/xinyut/workflows/16s-pipeline/microbiome.smk", line 74, in get_barcode

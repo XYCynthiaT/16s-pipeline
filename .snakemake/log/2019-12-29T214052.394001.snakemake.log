@@ -1,3 +1,0 @@
-RuleException in line 83 of /home/xinyut/workflows/16s-pipeline/Snakefile:
-Threads value has to be an integer or a callable.
-  File "/home/xinyut/workflows/16s-pipeline/Snakefile", line 83, in <module>
