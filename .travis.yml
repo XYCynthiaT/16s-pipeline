@@ -31,8 +31,7 @@ matrix:
         - dada2
         - DECIPHER
         - Biostrings
-      script:
-        scripts/rpackages.R
+      before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
     - language: python
       python: "3.7.4"
       install:
