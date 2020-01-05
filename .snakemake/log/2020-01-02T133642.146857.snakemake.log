@@ -1,3 +1,0 @@
-KeyError in line 147 of /home/xinyut/workflows/16s-pipeline/Snakefile:
-'genome_file'
-  File "/home/xinyut/workflows/16s-pipeline/Snakefile", line 147, in <module>

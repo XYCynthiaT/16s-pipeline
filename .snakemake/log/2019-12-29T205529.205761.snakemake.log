@@ -1,3 +1,0 @@
-KeyError in line 24 of /home/xinyut/workflows/16s-pipeline/Snakefile:
-'fwd_fastq'
-  File "/home/xinyut/workflows/16s-pipeline/Snakefile", line 24, in <module>
