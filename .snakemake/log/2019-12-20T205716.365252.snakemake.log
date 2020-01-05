@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 20
+Job counts:
+	count	jobs
+	1	all
+	1	taxonomy
+	2
+
+[Fri Dec 20 20:57:18 2019]
+rule taxonomy:
+    input: s5DADA2/DADA2_seqtab_nochim.rda, ../../silva/SILVA_SSU_r132_March2018.RData
+    output: s5DADA2/DADA2_taxaid.rda
+    jobid: 1
+
+Submitted job 1 with external jobid 'Submitted batch job 16403212'.
+[Fri Dec 20 20:59:48 2019]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Fri Dec 20 20:59:48 2019]
+localrule all:
+    input: s5DADA2/DADA2_taxaid.rda
+    jobid: 0
+
+[Fri Dec 20 20:59:48 2019]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-20T205716.365252.snakemake.log

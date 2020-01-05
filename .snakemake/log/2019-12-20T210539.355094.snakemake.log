@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 20
+Job counts:
+	count	jobs
+	1	all
+	1	taxaCleaning
+	2
+
+[Fri Dec 20 21:05:40 2019]
+rule taxaCleaning:
+    input: s5DADA2/DADA2_taxaid.rda, s5DADA2/DADA2_taxaid.rda
+    output: s6TidyData/ASV_samplCcounts.csv, s6TidyData/ASV_taxanomy.csv
+    jobid: 1
+
+Submitted job 1 with external jobid 'Submitted batch job 16403330'.
+[Fri Dec 20 21:05:50 2019]
+Error in rule taxaCleaning:
+    jobid: 1
+    output: s6TidyData/ASV_samplCcounts.csv, s6TidyData/ASV_taxanomy.csv
+    cluster_jobid: Submitted batch job 16403330
+
+Error executing rule taxaCleaning on cluster (jobid: 1, external: Submitted batch job 16403330, jobscript: /home/xinyut/workflows/16s-pipeline/.snakemake/tmp.cs4tg43m/snakejob.taxaCleaning.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-20T210539.355094.snakemake.log

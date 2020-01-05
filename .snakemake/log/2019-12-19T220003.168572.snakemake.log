@@ -1,0 +1,9 @@
+Building DAG of jobs...
+MissingInputException in line 146 of /home/xinyut/workflows/16s-pipeline/microbiome.smk:
+Missing input files for rule DADA2:
+3
+5
+4
+2
+6
+1

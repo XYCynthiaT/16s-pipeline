@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 11 of /home/xinyut/workflows/16s-pipeline/Snakefile:
+Missing input files for rule all:
+../../silva_test/SILVA_SSU_r132_March2018.RData

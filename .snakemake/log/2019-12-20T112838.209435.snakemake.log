@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 163 of /home/xinyut/workflows/16s-pipeline/microbiome.smk:
+Missing input files(Using '~' in your paths is not allowed as such platform specific syntax is not resolved by Snakemake. In general, try sticking to relative paths for everything inside the working directory.) for rule taxonomy:
+~/silva/SILVA_SSU_r132_March2018.RData

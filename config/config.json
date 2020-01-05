@@ -17,9 +17,8 @@
 	{
 		"threads": 6
 	},
-	"reference_genome":
+	"reference_db":
 	{
-		"genome_file_path": "../../silva",
-		"genome_file": "../../silva/SILVA_SSU_r132_March2018.RData"
+		"dada2_silva_url": "http://www2.decipher.codes/Classification/TrainingSets/SILVA_SSU_r132_March2018.RData"
 	}
 }

@@ -1,0 +1,6 @@
+ValueError in line 7 of /home/xinyut/workflows/16s-pipeline/Snakefile:
+Invalid file path or buffer object type: <class 'dict'>
+  File "/home/xinyut/workflows/16s-pipeline/Snakefile", line 7, in <module>
+  File "/home/xinyut/miniconda3/envs/16s-pipeline/lib/python3.7/site-packages/pandas/io/parsers.py", line 685, in parser_f
+  File "/home/xinyut/miniconda3/envs/16s-pipeline/lib/python3.7/site-packages/pandas/io/parsers.py", line 440, in _read
+  File "/home/xinyut/miniconda3/envs/16s-pipeline/lib/python3.7/site-packages/pandas/io/common.py", line 224, in get_filepath_or_buffer

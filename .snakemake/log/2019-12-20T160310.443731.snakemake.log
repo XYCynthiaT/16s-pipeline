@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	DADA2
+	1	all
+	2
+
+[Fri Dec 20 16:03:11 2019]
+rule DADA2:
+    input: s3Combine
+    output: s5DADA2/DADA2_seqtab_nochim.rda, s5DADA2/img/ploterrF.png, s5DADA2/img/ploterrR.png
+    jobid: 1
+
+[Fri Dec 20 16:03:29 2019]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Fri Dec 20 16:03:29 2019]
+localrule all:
+    input: s5DADA2/DADA2_seqtab_nochim.rda, s5DADA2/img/ploterrF.png, s5DADA2/img/ploterrR.png
+    jobid: 0
+
+[Fri Dec 20 16:03:29 2019]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-20T160310.443731.snakemake.log

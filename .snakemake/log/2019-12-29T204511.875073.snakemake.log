@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 21 of /home/xinyut/workflows/16s-pipeline/Snakefile:
+Missing input files for rule demultiplex_fwd:
+s0RawData/first_r2
+s0RawData/first_r1

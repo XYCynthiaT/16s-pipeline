@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cluster nodes: 20
+Job counts:
+	count	jobs
+	1	all
+	1	taxaCleaning
+	1	taxonomy
+	3
+
+[Fri Dec 20 20:37:39 2019]
+rule taxonomy:
+    input: s5DADA2/DADA2_seqtab_nochim.rda, ../../silva/SILVA_SSU_r132_March2018.RData
+    output: s5DADA2/DADA2_taxaid.rda
+    jobid: 2
+
+Submitted job 2 with external jobid 'Submitted batch job 16402984'.
+[Fri Dec 20 20:39:09 2019]
+Error in rule taxonomy:
+    jobid: 2
+    output: s5DADA2/DADA2_taxaid.rda
+    cluster_jobid: Submitted batch job 16402984
+
+Error executing rule taxonomy on cluster (jobid: 2, external: Submitted batch job 16402984, jobscript: /home/xinyut/workflows/16s-pipeline/.snakemake/tmp.b07p_axx/snakejob.taxonomy.2.sh). For error details see the cluster log and the log files of the involved rule(s).
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/xinyut/workflows/16s-pipeline/.snakemake/log/2019-12-20T203738.173464.snakemake.log
