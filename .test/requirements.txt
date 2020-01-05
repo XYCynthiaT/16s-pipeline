@@ -1,5 +1,0 @@
-pandas
-fastq-multx
-cutadapt
-fastqc
-R
