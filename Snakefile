@@ -152,10 +152,6 @@ rule DownloadRefDB:
 		wget {params.url} --output-document=database/SILVA_SSU.RData  
 		"""
 
-rule rpackages:
-	script:
-		"scripts/rpackages.R"
-
 rule DADA2:
 	input: 
 		cutLens = "cutLens.csv"
