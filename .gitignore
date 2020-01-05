@@ -1,3 +1,5 @@
 slurmout/
 sync
 output/
+.vscode/
+.snakemake/
