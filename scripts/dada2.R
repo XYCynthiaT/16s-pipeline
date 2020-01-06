@@ -3,7 +3,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("dada2", version = "3.10")
 BiocManager::install("DECIPHER")
 BiocManager::install("Biostrings")
-install.packages("dplyr", "ggplot2")
+install.packages("dplyr", "ggplot2", repos = "http://cran.us.r-project.org")
 
 library(dada2)
 library(dplyr)
