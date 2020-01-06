@@ -13,12 +13,12 @@ dependencies:
   - async-timeout=3.0.1=py_1000
   - attrs=19.3.0=py_0
   - bcrypt=3.1.7=py37h516909a_0
+  - bioconductor-decipher
   - bioconductor-biobase=2.32.0=0
   - bioconductor-biocgenerics=0.18.0=r3.2.2_0
   - bioconductor-biocparallel=1.4.3=r3.2.2_0
   - bioconductor-biostrings=2.38.4=0
   - bioconductor-dada2=1.0.3=0
-  - bioconductor-decipher
   - bioconductor-genomeinfodb=1.6.3=0
   - bioconductor-genomicalignments=1.6.3=1
   - bioconductor-genomicranges=1.22.4=0
