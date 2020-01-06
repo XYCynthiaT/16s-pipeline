@@ -1,3 +1,10 @@
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("dada2", version = "3.10")
+BiocManager::install("DECIPHER")
+BiocManager::install("Biostrings")
+install.packages("dplyr", "ggplot2")
+
 library(dada2)
 library(dplyr)
 library(ggplot2)

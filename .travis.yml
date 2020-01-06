@@ -1,55 +1,21 @@
-# language: python
-# python: "3.7.4"
-# install:
-#   - sudo apt-get update
-#   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-#   - bash miniconda.sh -b -p $HOME/miniconda
-#   - source "$HOME/miniconda/etc/profile.d/conda.sh"
-#   - hash -r
-#   - conda config --set always_yes yes --set changeps1 no
-#   - conda update -q conda
-#   - conda info -a
-#   - conda config --add channels defaults
-#   - conda config --add channels conda-forge
-#   - conda config --add channels bioconda
-#   - conda env create -f environment.yml
-#   - conda activate 16s-pipeline
-#   - conda install --name 16s-pipeline r-essentials r-base 
-#   # - conda create -q -n snakemake snakemake python=$TRAVIS_PYTHON_VERSION
-# script:
-#   # - source activate snakemake
-#   - snakemake --use-conda
-matrix:
-  include:
-    - language: r
-      r: bioc-release
-      cache: packages
-      r_packages:
-        - dplyr
-        - ggplot2
-      bioc_packages:
-        - dada2
-        - DECIPHER
-        - Biostrings
-      before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-    - language: python
-      python: "3.7.4"
-      install:
-        - sudo apt-get update
-        - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-        - bash miniconda.sh -b -p $HOME/miniconda
-        - source "$HOME/miniconda/etc/profile.d/conda.sh"
-        - hash -r
-        - conda config --set always_yes yes --set changeps1 no
-        - conda update -q conda
-        - conda info -a
-        - conda config --add channels defaults
-        - conda config --add channels conda-forge
-        - conda config --add channels bioconda
-        - conda env create -f environment.yml
-        - conda activate 16s-pipeline
-        - conda install --name 16s-pipeline r-essentials r-base 
-        # - conda create -q -n snakemake snakemake python=$TRAVIS_PYTHON_VERSION
-      script:
-        # - source activate snakemake
-        - snakemake
+language: python
+python: "3.7.4"
+install:
+  - sudo apt-get update
+  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - source "$HOME/miniconda/etc/profile.d/conda.sh"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+  - conda config --add channels defaults
+  - conda config --add channels conda-forge
+  - conda config --add channels bioconda
+  - conda env create -f environment.yml
+  - conda activate 16s-pipeline
+  - conda install --name 16s-pipeline r-essentials r-base 
+  # - conda create -q -n snakemake snakemake python=$TRAVIS_PYTHON_VERSION
+script:
+  # - source activate snakemake
+  - snakemake --use-conda
