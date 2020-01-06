@@ -3,3 +3,4 @@ sync
 output/
 .vscode/
 .snakemake/
+database/

@@ -1,4 +1,4 @@
-configfile: "config/config.yaml"
+configfile: "config/config.yml"
 
 shell.prefix("set +o pipefail; ")
 shell.prefix("set -x;")
@@ -149,7 +149,7 @@ rule DownloadRefDB:
 		url = config["reference_db"]["dada2_silva_url"]
 	shell:
 		"""
-		wget {params.url} --output-document=database/SILVA_SSU.RData  
+		wget {params.url} --output-document=database/SILVA_SSU.RData -q
 		"""
 
 rule DADA2:

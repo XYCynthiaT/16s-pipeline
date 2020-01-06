@@ -1,0 +1,18 @@
+raw_fastq:
+  # the path and filename of your r1 fastq file
+  - "input/demo_r1.fq.gz"
+  # the path and filename of your r2 fastq file
+  - "input/demo_r2.fq.gz"
+
+# the path and filename of your barcodes. The barcode file should only contain 2 columns in the order of samplenames and barcodes
+barcode: "input/barcode.txt"
+
+primers:
+  fwd: "GTGYCAGCMGCCGCGGTAA"
+  rev: "GGACTACNVGGGTWTCTAAT"
+
+cutadapt:
+  threads: 6
+
+reference_db:
+  dada2_silva_url: "http://www2.decipher.codes/Classification/TrainingSets/SILVA_SSU_r132_March2018.RData"

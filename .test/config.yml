@@ -1,11 +1,11 @@
 raw_fastq:
   # the path and filename of your r1 fastq file
-  - "s0RawData/demo_r1.fq.gz"
+  - ".test/data/demo_r1.fq.gz"
   # the path and filename of your r2 fastq file
-  - "s0RawData/demo_r2.fq.gz"
+  - ".test/data/demo_r2.fq.gz"
 
 # the path and filename of your barcodes. The barcode file should only contain 2 columns in the order of samplenames and barcodes
-barcode: s0RawData/barcode
+barcode: ".test/data/barcode.txt"
 
 primers:
   fwd: "GTGYCAGCMGCCGCGGTAA"
