@@ -160,8 +160,8 @@ rule DADA2:
 		"output/s5DADA2/img/ploterrF.png",
 		"output/s5DADA2/img/ploterrR.png"
 	params:
-		path = "output/s3Combine"
-		truncLen1 = config["truncLen"]["r1"]
+		path = "output/s3Combine",
+		truncLen1 = config["truncLen"]["r1"],
 		truncLen2 = config["truncLen"]["r2"]
 	script:
 		"scripts/dada2.R"
