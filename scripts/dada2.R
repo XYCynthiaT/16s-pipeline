@@ -12,9 +12,9 @@ loger = function(msg){
 # --> Step1. Getting ready
 loger("Getting ready")
 path <- snakemake@params[[1]]
-cutLens <- read.csv(snakemake@input[[1]])
-#trainingset <- "~/silva/silva_nr_v132_train_set.fa.gz"
-#trainingset_species <- "~/silva/silva_species_assignment_v132.fa.gz"
+truncLen_r1 <- snakemake@params[[2]]
+truncLen_r2 <- snakemake@params[[3]]
+# cutLens <- read.csv(snakemake@input[[1]])
 
 # Read in fastq file names by r1 and r2
 loger("Read in fastq file names")
@@ -46,7 +46,8 @@ names(filfs) = sampleID
 names(filrs) = sampleID
 out = filterAndTrim(
     fnfs, filfs, fnrs, filrs, 
-    truncLen=c(cutLens$r1, cutLens$r2), # Ref to FastQC
+    truncLen=c(truncLen_r1, truncLen_r2),
+    # truncLen=c(cutLens$r1, cutLens$r2), # Ref to FastQC
     maxN = 0, # DADA2 requires no Ns
     maxEE=c(2, 2), # the maximum number of “expected errors” allowed in a read
     truncQ=2, 
@@ -107,4 +108,3 @@ print("passing rate:")
 print(sum(seqtab.nochim)/sum(seqtab))
 
 save(seqtab.nochim, file = "output/s5DADA2/DADA2_seqtab_nochim.rda")
-# save.image("output/s5DADA2/DADA2_raw.rda")

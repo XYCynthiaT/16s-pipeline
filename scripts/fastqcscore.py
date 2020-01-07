@@ -27,6 +27,7 @@ def readtbl(path):
                 start = True
     return pd.read_csv(io.StringIO(tbl), sep = "\t")
 
+#FIXME raise a warning but don't cut when there are some poor quality score at the beginning
 def cutLength(tbl):
     cutLen = 200
     for i in range(len(tbl.index)):

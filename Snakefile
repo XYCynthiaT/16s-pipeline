@@ -138,7 +138,7 @@ rule fastqcScore:
 	output:
 		directory("output/s4FastQC/r1_fastqc"),
 		directory("output/s4FastQC/r2_fastqc"),
-		temp('cutLens.csv')
+		'output/guessCutLens.csv'
 	script:
 		"scripts/fastqcscore.py"
 
@@ -153,14 +153,16 @@ rule DownloadRefDB:
 		"""
 
 rule DADA2:
-	input: 
-		cutLens = "cutLens.csv"
+	# input: 
+	# 	cutLens = "cutLens.csv"
 	output:
 		temp("output/s5DADA2/DADA2_seqtab_nochim.rda"),
 		"output/s5DADA2/img/ploterrF.png",
 		"output/s5DADA2/img/ploterrR.png"
 	params:
 		path = "output/s3Combine"
+		truncLen1 = config["truncLen"]["r1"]
+		truncLen2 = config["truncLen"]["r2"]
 	script:
 		"scripts/dada2.R"
 
