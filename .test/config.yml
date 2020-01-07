@@ -7,6 +7,7 @@ raw_fastq:
 # the path and filename of your barcodes. The barcode file should only contain 2 columns in the order of samplenames and barcodes
 barcode: ".test/data/barcode.txt"
 
+# primers for v4 regions
 primers:
   fwd: "GTGYCAGCMGCCGCGGTAA"
   rev: "GGACTACNVGGGTWTCTAAT"
@@ -14,5 +15,11 @@ primers:
 cutadapt:
   threads: 6
 
+# this is the downloading url of silva database with the version of SSU_r132_March2018. It's specifically designed for decipher package.
 reference_db:
   dada2_silva_url: "http://www2.decipher.codes/Classification/TrainingSets/SILVA_SSU_r132_March2018.RData"
+
+# this is the default trunck length for sequences from r1 and r2, you can change them depends on your per base sequence quality score from fastqc reports.
+truncLen:
+  r1: 190
+  r2: 160
