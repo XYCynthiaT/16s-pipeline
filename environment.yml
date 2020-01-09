@@ -14,4 +14,4 @@ dependencies:
   - r-base=3.6.2
   - snakemake=5.9.1
   - r-dplyr=0.8.3
-  - jsonlite=1.6
+  - r-jsonlite=1.6
