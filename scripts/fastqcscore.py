@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 import io
 from snakemake import shell
+import json
 
 
 def unzip(zipfn, destination):
@@ -44,21 +45,16 @@ def main():
 
     unzip(zipfile1, "output/s4FastQC")
     unzip(zipfile2, "output/s4FastQC")
-
-    paths = ["output/s4FastQC/r1_fastqc/fastqc_data.txt", 
-             "output/s4FastQC/r2_fastqc/fastqc_data.txt"]
-
-    cutLens = []
     
-    for path in paths:
-        scores = readtbl(path)
-        cutLens.append(cutLength(scores))
+    cutLens = {}
 
-    with open('cutLens.csv', 'w') as myfile:
-            writer = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-            writer.writerow(['r1', 'r2'])
-            writer.writerow(cutLens)
-            
+    for i in range(2):
+        path = f"output/s4FastQC/r{i}_fastqc/fastqc_data.txt"
+        cutLens[f"r{i}"] = cutLength(readtbl(path))
+
+    with open('output/truncLens.json', 'w') as fh:
+        json.dump(cutLens, fh)
+
 
 if __name__ == "__main__":
     main()

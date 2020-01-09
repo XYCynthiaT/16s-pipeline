@@ -2,18 +2,18 @@ library(dada2)
 library(dplyr)
 library(ggplot2)
 library(DECIPHER)
+library(jsonlite)
 packageVersion("dada2")
 
 loger = function(msg){
     t = strftime(Sys.time(), "%Y-%m-%d %H-%M-%S")
-    cat("[ ", t, " ] ", msg, "\\n")
+    cat("[ ", t, " ] ", msg, "\n")
 }
 
 # --> Step1. Getting ready
 loger("Getting ready")
 path <- snakemake@params[[1]]
-truncLen_r1 <- snakemake@params[[2]]
-truncLen_r2 <- snakemake@params[[3]]
+truncLens = read_json("output/truncLens.json")
 # cutLens <- read.csv(snakemake@input[[1]])
 
 # Read in fastq file names by r1 and r2
@@ -46,8 +46,7 @@ names(filfs) = sampleID
 names(filrs) = sampleID
 out = filterAndTrim(
     fnfs, filfs, fnrs, filrs, 
-    truncLen=c(truncLen_r1, truncLen_r2),
-    # truncLen=c(cutLens$r1, cutLens$r2), # Ref to FastQC
+    truncLen=c(truncLens$r1, truncLens$r2),
     maxN = 0, # DADA2 requires no Ns
     maxEE=c(2, 2), # the maximum number of “expected errors” allowed in a read
     truncQ=2, 

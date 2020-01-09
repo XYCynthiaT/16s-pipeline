@@ -10,7 +10,7 @@ for (pkg in pkgs) {
 
 loger = function(msg){
     t = strftime(Sys.time(), "%Y-%m-%d %H-%M-%S")
-    cat("[ ", t, " ] ", msg, "\\n")
+    cat("[ ", t, " ] ", msg, "\n")
 }
 
 load(snakemake@input[[1]])

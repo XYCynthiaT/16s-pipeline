@@ -2,12 +2,24 @@ configfile: "config/config.yml"
 
 shell.prefix("set +o pipefail; ")
 shell.prefix("set -x;")
-import pandas as pd
 
+import pandas as pd
+import json
+import os
+
+# extract sample names, path, and barcode
 barcodes = pd.read_csv(config["barcode"], sep="\t") #?
 barcodes["Sample"] = barcodes["Sample"].astype(str)
 samples = barcodes.Sample.tolist()
+# 1 for R1 and 2 for R2
 read_order = [1,2]
+# save truncLen to disk if exist
+if config.get("truncLen"):
+	if not os.path.isdir("output"):
+		os.mkdir("output")
+	with open("output/truncLens.json", "wt") as fh:
+		json.dump(config["truncLen"], fh)
+
 
 rule all:
 	input:
@@ -138,7 +150,7 @@ rule fastqcScore:
 	output:
 		directory("output/s4FastQC/r1_fastqc"),
 		directory("output/s4FastQC/r2_fastqc"),
-		'output/guessCutLens.csv'
+		"output/truncLen.json"
 	script:
 		"scripts/fastqcscore.py"
 
@@ -152,17 +164,33 @@ rule DownloadRefDB:
 		wget {params.url} --output-document=database/SILVA_SSU.RData -q
 		"""
 
+def dada2_truncLen(readOrder, guessFile):
+	'''
+	readOrder is a string, either "r1" or "r2",
+	guessFile is generated from fastqcScore
+	'''
+	if(config.get("truncLen").get(readOrder)):
+		return config["truncLen"][readOrder]
+	else:
+		tbl = pd.read_csv(guessFile, sep = ",")
+		return tbl.iloc[:][readOrder]
+
+def dada2_input(wildcards):
+	res = ["output/s3Combine/{wildcards.sample}.r1.fastq",
+		   "output/s3Combine/{wildcards.sample}.r2.fastq"]
+	if not config.get("truncLen"):
+		res.append("output/truncLens.json")
+	return res
+		
+
 rule DADA2:
-	# input: 
-	# 	cutLens = "cutLens.csv"
+	input: dada2_input
 	output:
 		temp("output/s5DADA2/DADA2_seqtab_nochim.rda"),
 		"output/s5DADA2/img/ploterrF.png",
 		"output/s5DADA2/img/ploterrR.png"
 	params:
-		path = "output/s3Combine",
-		truncLen1 = config["truncLen"]["r1"],
-		truncLen2 = config["truncLen"]["r2"]
+		path = "output/s3Combine"
 	script:
 		"scripts/dada2.R"
 
