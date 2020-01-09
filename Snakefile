@@ -175,16 +175,16 @@ def dada2_truncLen(readOrder, guessFile):
 		tbl = pd.read_csv(guessFile, sep = ",")
 		return tbl.iloc[:][readOrder]
 
-def dada2_input(wildcards):
-	res = ["output/s3Combine/{wildcards.sample}.r1.fastq",
-		   "output/s3Combine/{wildcards.sample}.r2.fastq"]
+def dada2_input():
+	res = [expand("output/s3Combine/{sample}.r1.fastq", sample=samples),
+		   expand("output/s3Combine/{sample}.r2.fastq", sample=samples)]
 	if not config.get("truncLen"):
 		res.append("output/truncLens.json")
 	return res
 		
 
 rule DADA2:
-	input: dada2_input
+	input: dada2_input()
 	output:
 		temp("output/s5DADA2/DADA2_seqtab_nochim.rda"),
 		"output/s5DADA2/img/ploterrF.png",
