@@ -13,7 +13,7 @@ loger = function(msg){
 # --> Step1. Getting ready
 loger("Getting ready")
 path <- snakemake@params[[1]]
-truncLens = read_json("output/truncLens.json")
+truncLens = read_json( snakemake@input[[length(snakemake@input)]])
 # cutLens <- read.csv(snakemake@input[[1]])
 
 # Read in fastq file names by r1 and r2

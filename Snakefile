@@ -17,9 +17,13 @@ read_order = [1,2]
 if config.get("truncLen"):
 	if not os.path.isdir("output"):
 		os.mkdir("output")
-	with open("output/truncLens.json", "wt") as fh:
+	with open("output/truncLensConfig.json", "wt") as fh:
 		json.dump(config["truncLen"], fh)
-
+else:
+	if not os.path.isdir("output"):
+		os.mkdir("output")
+	with open("output/truncLens.json", "wt") as fh:
+		json.dump({"r1":200, "r2":200}, fh)
 
 rule all:
 	input:
@@ -150,7 +154,7 @@ rule fastqcScore:
 	output:
 		directory("output/s4FastQC/r1_fastqc"),
 		directory("output/s4FastQC/r2_fastqc"),
-		"output/truncLen.json"
+		"output/truncLens.json"
 	script:
 		"scripts/fastqcscore.py"
 
@@ -164,27 +168,18 @@ rule DownloadRefDB:
 		wget {params.url} --output-document=database/SILVA_SSU.RData -q
 		"""
 
-def dada2_truncLen(readOrder, guessFile):
-	'''
-	readOrder is a string, either "r1" or "r2",
-	guessFile is generated from fastqcScore
-	'''
-	if(config.get("truncLen").get(readOrder)):
-		return config["truncLen"][readOrder]
-	else:
-		tbl = pd.read_csv(guessFile, sep = ",")
-		return tbl.iloc[:][readOrder]
-
-def dada2_input(wildcards):
-	res = ["output/s3Combine/{wildcards.sample}.r1.fastq",
-		   "output/s3Combine/{wildcards.sample}.r2.fastq"]
+def dada2_input():
+	res = [expand("output/s4FastQC/r{read_order}_fastqc.zip", read_order=read_order)]
 	if not config.get("truncLen"):
 		res.append("output/truncLens.json")
+	else:
+		res.append("output/truncLensConfig.json")
 	return res
 		
 
 rule DADA2:
-	input: dada2_input
+	input: 
+		dada2_input()
 	output:
 		temp("output/s5DADA2/DADA2_seqtab_nochim.rda"),
 		"output/s5DADA2/img/ploterrF.png",

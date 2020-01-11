@@ -14,7 +14,6 @@ def readtbl(path):
     #FIXME select rows by modules
     # tbl = pd.read_csv(path, sep = "\t", header = 12, nrows = 57)
     # return tbl
-    path = "output/s4FastQC/r1_fastqc/fastqc_data.txt"
     with open(path, "rt") as fh:
         start = False
         tbl = ""
@@ -48,7 +47,7 @@ def main():
     
     cutLens = {}
 
-    for i in range(2):
+    for i in range(1,3):
         path = f"output/s4FastQC/r{i}_fastqc/fastqc_data.txt"
         cutLens[f"r{i}"] = cutLength(readtbl(path))
 

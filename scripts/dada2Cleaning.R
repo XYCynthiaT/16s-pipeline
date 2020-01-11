@@ -1,7 +1,4 @@
 # setwd(dirname(parent.frame(2)$ofile))
-# working dir: ~/fasting
-# input dir: ~/s5Dada2
-# output dir: ~/s5Dada2
 
 pkgs <- c("Biostrings", "dplyr")
 for (pkg in pkgs) {
@@ -66,3 +63,5 @@ rownames(orderedTaxid) <- paste0("ASV", 1:nrow(orderedTaxid))
 loger("Export to .csv files")
 write.csv(uniqSeqtab, file = "output/s6TidyData/ASV_samplCounts.csv")
 write.csv(orderedTaxid, file = "output/s6TidyData/ASV_taxanomy.csv")
+write.csv(seqs, file = "output/s6TidyData/ASV_dnaSeqs.csv")
+save(seqs, file = "output/s6TidyData/ASV_dnaSeqs.rda")
