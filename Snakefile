@@ -170,7 +170,6 @@ def dada2_input():
 		res.append("output/truncLens.json")
 	return res
 		
-
 rule DADA2:
 	input: 
 		dada2_input()
