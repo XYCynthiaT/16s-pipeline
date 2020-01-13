@@ -14,16 +14,12 @@ samples = barcodes.Sample.tolist()
 # 1 for R1 and 2 for R2
 read_order = [1,2]
 # save truncLen to disk if exist
-if config.get("truncLen"):
-	if not os.path.isdir("output"):
-		os.mkdir("output")
-	with open("output/truncLensConfig.json", "wt") as fh:
-		json.dump(config["truncLen"], fh)
-else:
-	if not os.path.isdir("output"):
-		os.mkdir("output")
+truncLen = config.get("truncLen")
+if not os.path.isdir("output"):
+	os.mkdir("output")
+if truncLen != None:
 	with open("output/truncLens.json", "wt") as fh:
-		json.dump({"r1":200, "r2":200}, fh)
+		json.dump(config["truncLen"], fh)
 
 rule all:
 	input:
@@ -172,8 +168,6 @@ def dada2_input():
 	res = [expand("output/s4FastQC/r{read_order}_fastqc.zip", read_order=read_order)]
 	if not config.get("truncLen"):
 		res.append("output/truncLens.json")
-	else:
-		res.append("output/truncLensConfig.json")
 	return res
 		
 
