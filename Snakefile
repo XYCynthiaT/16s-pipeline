@@ -156,12 +156,15 @@ rule fastqcScore:
 
 rule DownloadRefDB:
 	output:
-		"database/SILVA_SSU.RData"
+		"database/SILVA_SSU.RData",
+		"database/silva_species.fa.gz"
 	params:
-		url = config["reference_db"]["dada2_silva_url"]
+		taxa_url = config["reference_db"]["dada2_silva_url"],
+		species_url = config["reference_db"]["dada2_silva_species_url"]
 	shell:
 		"""
-		wget {params.url} --output-document=database/SILVA_SSU.RData -q
+		wget {params.taxa_url} --output-document=database/SILVA_SSU.RData -q
+		wget {params.species_url} --output-document=database/silva_species.fa.gz -q
 		"""
 
 def dada2_input():
@@ -170,6 +173,7 @@ def dada2_input():
 		res.append("output/truncLens.json")
 	return res
 		
+
 rule DADA2:
 	input: 
 		dada2_input()
@@ -185,7 +189,8 @@ rule DADA2:
 rule taxonomy:
 	input:
 		"output/s5DADA2/DADA2_seqtab_nochim.rda",
-		"database/SILVA_SSU.RData"
+		"database/SILVA_SSU.RData",
+		"database/silva_species.fa.gz"
 	output:
 		temp("output/s5DADA2/DADA2_taxaid.rda")
 	script:

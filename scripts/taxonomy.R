@@ -9,6 +9,7 @@ loger = function(msg){
 
 load(snakemake@input[[1]])
 load(snakemake@input[[2]])
+silva_species = snakemake@input[[3]]
 
 # --> Step10. Assign taxonomy
 loger("Assign taxonomy, take a long time...")
@@ -26,5 +27,6 @@ taxid = t(sapply(ids, function(x){
 }))
 colnames(taxid) = ranks
 rownames(taxid) = getSequences(seqtab.nochim)
+taxid <- addSpecies(taxid, silva_species)
 
 save(dna, taxid, file = "output/s5DADA2/DADA2_taxaid.rda")
