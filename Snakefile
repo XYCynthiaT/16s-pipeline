@@ -1,4 +1,5 @@
 configfile: "config/config.yml"
+report: "report/workflow.rst"
 
 shell.prefix("set +o pipefail; ")
 shell.prefix("set -x;")
@@ -134,6 +135,8 @@ rule fastQC:
 		r2 = expand("output/s3Combine/{sample}.r2.fastq", sample=samples)
 	output:
 		# directory("s4FastQC"),
+		report("output/s4FastQC/r1_fastqc.html", caption="report/fastQC.rst", category="FastQC Report"),
+		report("output/s4FastQC/r2_fastqc.html", caption="report/fastQC.rst", category="FastQC Report"),
 		zipfiles = expand("output/s4FastQC/r{read_order}_fastqc.zip", read_order=read_order),
 		r1 = temp("output/s4FastQC/r1.fastq.gz"),
 		r2 = temp("output/s4FastQC/r2.fastq.gz")
@@ -178,9 +181,9 @@ rule DADA2:
 	input: 
 		dada2_input()
 	output:
-		temp("output/s5DADA2/DADA2_seqtab_nochim.rda"),
-		"output/s5DADA2/img/ploterrF.png",
-		"output/s5DADA2/img/ploterrR.png"
+		report("output/s5DADA2/img/ploterrF.png", caption="report/errorRate.rst", category="Error Rate"),
+		report("output/s5DADA2/img/ploterrR.png", caption="report/errorRate.rst", category="Error Rate"),
+		temp("output/s5DADA2/DADA2_seqtab_nochim.rda")
 	params:
 		path = "output/s3Combine"
 	script:

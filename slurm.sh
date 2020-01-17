@@ -10,4 +10,4 @@
 ##SBATCH --mail-type=ALL
 ##SBATCH --mail-user=myemail@email.com
 
-snakemake -j 90 --cluster-config config/cluster.json --cluster "sbatch -J {cluster.name} -p {cluster.partition} -N {cluster.nodes} -n {cluster.ntasks} --mem={cluster.mem} -t {cluster.time} -o {cluster.output} -e {cluster.error}"
+snakemake -j 90 --cluster-config config/cluster.json --cluster "sbatch -J {cluster.name} -p {cluster.partition} -N {cluster.nodes} -n {cluster.ntasks} --mem={cluster.mem} -t {cluster.time} -o {cluster.output} -e {cluster.error}"  --report output/report.html

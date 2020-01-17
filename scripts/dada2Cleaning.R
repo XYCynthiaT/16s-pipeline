@@ -49,7 +49,7 @@ rownames(uniqSeqtab) <- paste0("ASV", 1:nrow(uniqSeqtab))
 # Feature data (fdata) ----------------------------------------------------
 
 loger("Clean up taxaid for feature data")
-orderedTaxid <- taxid[as.character(seqs),]
+orderedTaxid <- taxid[as.character(seqs), 1:6]
 # <Inspecting steps>
 seqs_taxid <- rownames(orderedTaxid) %>%
     DNAStringSet()

@@ -1,0 +1,1 @@
+FastQC reports for r1 and r2 sequences. View the report by downloading them. The only plot we care about in fastQC reports is "Per base sequence quality". We need to use it to decide the truncLen in DADA2.

@@ -27,6 +27,5 @@ taxid = t(sapply(ids, function(x){
 }))
 colnames(taxid) = ranks
 rownames(taxid) = getSequences(seqtab.nochim)
-taxid <- addSpecies(taxid, silva_species)
 
-save(dna, taxid, file = "output/s5DADA2/DADA2_taxaid.rda")
+save(dna, taxid, ids, file = "output/s5DADA2/DADA2_taxaid.rda")
